@@ -22,5 +22,5 @@ string (the default)        Just a string value
 # cat=basic; type=string; label=Filepicker.io API key: Get an API key from Filepicker.io
 apiKey =
 
-# cat=basic; type=string; label=Filepicker.io services: Comma-separated list of Filepicker.io services<br />Currently available services: filepicker.SERVICES.BOX, filepicker.SERVICES.COMPUTER, filepicker.SERVICES.DROPBOX, filepicker.SERVICES.FACEBOOK, filepicker.SERVICES.GITHUB, filepicker.SERVICES.GMAIL, filepicker.SERVICES.GOOGLE_DRIVE, filepicker.SERVICES.IMAGE_SEARCH, filepicker.SERVICES.URL, filepicker.SERVICES.WEBCAM
+# cat=basic; type=string; label=Filepicker.io services: Comma-separated list of Filepicker.io services. Currently available services: filepicker.SERVICES.BOX, filepicker.SERVICES.COMPUTER, filepicker.SERVICES.DROPBOX, filepicker.SERVICES.FACEBOOK, filepicker.SERVICES.GITHUB, filepicker.SERVICES.GMAIL, filepicker.SERVICES.GOOGLE_DRIVE, filepicker.SERVICES.IMAGE_SEARCH, filepicker.SERVICES.URL, filepicker.SERVICES.WEBCAM
 services = filepicker.SERVICES.BOX, filepicker.SERVICES.COMPUTER, filepicker.SERVICES.DROPBOX, filepicker.SERVICES.FACEBOOK, filepicker.SERVICES.GITHUB, filepicker.SERVICES.GMAIL, filepicker.SERVICES.GOOGLE_DRIVE, filepicker.SERVICES.IMAGE_SEARCH, filepicker.SERVICES.URL, filepicker.SERVICES.WEBCAM
