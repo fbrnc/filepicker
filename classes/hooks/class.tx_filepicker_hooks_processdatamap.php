@@ -17,27 +17,32 @@ class tx_filepicker_hooks_processdatamap {
 	 *
 	 * @param t3lib_TCEmain $parentObject
 	 */
-	public function processDatamap_preProcessFieldArray($incomingFieldArray, $table, $id, t3lib_TCEmain $parentObject) {
-		foreach ($incomingFieldArray as $field => $value) {
-			if (isset($GLOBALS['TCA'][$table]['columns'][$field])) {
-				$tcaFieldConf = $GLOBALS['TCA'][$table]['columns'][$field]['config'];
-				if ($tcaFieldConf['type'] == 'group') {
-					if ($tcaFieldConf['internal_type'] == 'file' || $tcaFieldConf['internal_type'] == 'file_reference') {
-						$values = t3lib_div::trimExplode(',', $value, TRUE);
-						foreach ($values as $key => $value) {
-							if (strpos($value, '|') === FALSE) {
-								// this is a file that hasn't been selected using Filepicker.io
-								continue;
-							}
-							list($url, $filename) = t3lib_div::trimExplode('|', $value);
-							$result = $this->downloadFile($url, $filename);
-							if ($result !== FALSE) {
-								$values[$key] = $result;
-							} else {
-								t3lib_div::sysLog('Failed downloading file "'.$value.'"', 'filepicker', 3);
+	public function processDatamap_beforeStart(t3lib_TCEmain $parentObject) {
+		foreach($parentObject->datamap as $table => $conf) {
+			t3lib_div::loadTCA($table);
+			foreach($conf as $id => $fields) {
+				foreach ($fields as $field => $value) {
+					if (isset($GLOBALS['TCA'][$table]['columns'][$field])) {
+						$tcaFieldConf = $GLOBALS['TCA'][$table]['columns'][$field]['config'];
+						if ($tcaFieldConf['type'] == 'group') {
+							if ($tcaFieldConf['internal_type'] == 'file' || $tcaFieldConf['internal_type'] == 'file_reference') {
+								$values = t3lib_div::trimExplode(',', $value, TRUE);
+								foreach ($values as $key => $value) {
+									if (strpos($value, '|') === FALSE) {
+										// this is a file that hasn't been selected using Filepicker.io
+										continue;
+									}
+									list($url, $filename) = t3lib_div::trimExplode('|', $value);
+									$result = $this->downloadFile($url, $filename);
+									if ($result !== FALSE) {
+										$values[$key] = $result;
+									} else {
+										t3lib_div::sysLog('Failed downloading file "'.$value.'"', 'filepicker', 3);
+									}
+								}
+								$parentObject->datamap[$table][$id][$field] = implode(',', $values);
 							}
 						}
-						$parentObject->datamap[$table][$id][$field] = implode(',', $values);
 					}
 				}
 			}
