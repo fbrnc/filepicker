@@ -41,7 +41,7 @@ class tx_filepicker_hooks_dbfileicons implements t3lib_TCEforms_dbFileIconsHook 
 			<script type="text/javascript" src="//api.filepicker.io/v0/filepicker.js"></script>
 			<script type="text/javascript">filepicker.setKey("'.$this->getEmConf('apiKey').'");</script>';
 
-		$onClick = "filepicker.getFile(['text/plain','image/jpeg'], {
+		$onClick = "filepicker.getFile('', {
 			'multiple': true,
 			'modal': true,
 			'services': [".htmlspecialchars($this->getEmConf('services'))."]
