@@ -52,7 +52,7 @@ class tx_filepicker_hooks_dbfileicons implements t3lib_TCEforms_dbFileIconsHook 
 			})
 		});";
 
-		$icons['R'][] = $filepickerInit . '<a href="#" onclick="'.htmlspecialchars($onClick).'">'.
+		$icons['R'][] = $filepickerInit . '<a href="#" onclick="'.htmlspecialchars($onClick).'" title="Filepicker.io">'.
 			'<img' . t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], '../typo3conf/ext/filepicker/ext_icon.gif', 'width="16" height="16"') . '>' .
 		'</a>';
 	}
