@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext "filepicker".
 #
-# Auto generated 31-07-2012 23:18
+# Auto generated 03-08-2012 08:22
 #
 # Manual updates:
 # Only the data in the array - everything else is removed by next
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => 'AOE media',
-	'version' => '0.0.2',
+	'version' => '0.0.3',
 	'constraints' => array(
 		'depends' => array(
 			'cms' => '',
